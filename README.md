@@ -3,7 +3,7 @@ Change Windows Wallpapers Randomly based on Konachan board
 
 If you like me, likes to have random wallpapers, but hates needing to download everytime, here it is.
 
-It's based on Konachan image board right now, but I might add other options in the future
+It's based on Konachan and Unsplash image board right now, but I might add other options in the future
 
 ![image](https://user-images.githubusercontent.com/8836540/131620482-86348679-c5ee-4784-a065-0eb3f95f262b.png)
 ![image](https://user-images.githubusercontent.com/8836540/131620547-bc4600a3-37a8-49b0-9e2f-ed00b64c3008.png)
