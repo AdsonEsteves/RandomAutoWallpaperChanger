@@ -1,4 +1,4 @@
-# AutoWallpaperChanger
+# RandomAutoWallpaperChanger
 Change Windows Wallpapers Randomly based on Konachan board
 
 If you like me, likes to have random wallpapers, but hates needing to download everytime, here it is.
