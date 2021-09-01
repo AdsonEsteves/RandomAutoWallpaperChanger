@@ -30,131 +30,48 @@ namespace AutoBGchanger
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(telaSelecaoBG));
+            this.buttonRun = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.boxWidth = new System.Windows.Forms.TextBox();
-            this.boxHeight = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxRating = new System.Windows.Forms.ComboBox();
-            this.boxTags = new System.Windows.Forms.TextBox();
             this.numericUpDownTimer = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.buttonRun1 = new System.Windows.Forms.Button();
+            this.labelImageHub = new System.Windows.Forms.Label();
+            this.comboBoxHub = new System.Windows.Forms.ComboBox();
+            this.panelHub = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimer)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonRun
             // 
-            this.button1.Location = new System.Drawing.Point(119, 216);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Run";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.acaoRun);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Size";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Rating";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 121);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 15);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Tags";
+            this.buttonRun.Location = new System.Drawing.Point(43, 249);
+            this.buttonRun.Name = "buttonRun";
+            this.buttonRun.Size = new System.Drawing.Size(75, 23);
+            this.buttonRun.TabIndex = 0;
+            this.buttonRun.Text = "Run";
+            this.buttonRun.UseVisualStyleBackColor = true;
+            this.buttonRun.Click += new System.EventHandler(this.acaoRun);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 167);
+            this.label4.Location = new System.Drawing.Point(12, 209);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 15);
             this.label4.TabIndex = 4;
             this.label4.Text = "Timer";
             // 
-            // boxWidth
-            // 
-            this.boxWidth.Location = new System.Drawing.Point(69, 23);
-            this.boxWidth.Name = "boxWidth";
-            this.boxWidth.Size = new System.Drawing.Size(84, 23);
-            this.boxWidth.TabIndex = 5;
-            this.boxWidth.Text = "1920";
-            // 
-            // boxHeight
-            // 
-            this.boxHeight.Location = new System.Drawing.Point(183, 23);
-            this.boxHeight.Name = "boxHeight";
-            this.boxHeight.Size = new System.Drawing.Size(84, 23);
-            this.boxHeight.TabIndex = 6;
-            this.boxHeight.Text = "1080";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(45, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(18, 15);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "W";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(161, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 15);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "H";
-            // 
-            // comboBoxRating
-            // 
-            this.comboBoxRating.FormattingEnabled = true;
-            this.comboBoxRating.Items.AddRange(new object[] {
-            "Any",
-            "Safe",
-            "Safe-Questionable",
-            "Questionable",
-            "Questionable-Explicit",
-            "Explicit"});
-            this.comboBoxRating.Location = new System.Drawing.Point(69, 73);
-            this.comboBoxRating.Name = "comboBoxRating";
-            this.comboBoxRating.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxRating.TabIndex = 9;
-            this.comboBoxRating.Text = "Safe";
-            // 
-            // boxTags
-            // 
-            this.boxTags.Location = new System.Drawing.Point(69, 121);
-            this.boxTags.Name = "boxTags";
-            this.boxTags.Size = new System.Drawing.Size(198, 23);
-            this.boxTags.TabIndex = 10;
-            // 
             // numericUpDownTimer
             // 
-            this.numericUpDownTimer.Location = new System.Drawing.Point(69, 165);
+            this.numericUpDownTimer.Location = new System.Drawing.Point(55, 207);
+            this.numericUpDownTimer.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
             this.numericUpDownTimer.Name = "numericUpDownTimer";
-            this.numericUpDownTimer.Size = new System.Drawing.Size(60, 23);
+            this.numericUpDownTimer.Size = new System.Drawing.Size(46, 23);
             this.numericUpDownTimer.TabIndex = 11;
             this.numericUpDownTimer.Value = new decimal(new int[] {
             5,
@@ -165,7 +82,7 @@ namespace AutoBGchanger
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(135, 170);
+            this.label7.Location = new System.Drawing.Point(107, 209);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 15);
             this.label7.TabIndex = 12;
@@ -174,28 +91,62 @@ namespace AutoBGchanger
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // buttonRun1
+            // 
+            this.buttonRun1.Location = new System.Drawing.Point(174, 249);
+            this.buttonRun1.Name = "buttonRun1";
+            this.buttonRun1.Size = new System.Drawing.Size(75, 23);
+            this.buttonRun1.TabIndex = 13;
+            this.buttonRun1.Text = "Run 1 time";
+            this.buttonRun1.UseVisualStyleBackColor = true;
+            this.buttonRun1.Click += new System.EventHandler(this.acaoRun1);
+            // 
+            // labelImageHub
+            // 
+            this.labelImageHub.AutoSize = true;
+            this.labelImageHub.Location = new System.Drawing.Point(12, 16);
+            this.labelImageHub.Name = "labelImageHub";
+            this.labelImageHub.Size = new System.Drawing.Size(63, 15);
+            this.labelImageHub.TabIndex = 14;
+            this.labelImageHub.Text = "ImageHub";
+            // 
+            // comboBoxHub
+            // 
+            this.comboBoxHub.FormattingEnabled = true;
+            this.comboBoxHub.Location = new System.Drawing.Point(93, 13);
+            this.comboBoxHub.Name = "comboBoxHub";
+            this.comboBoxHub.Size = new System.Drawing.Size(199, 23);
+            this.comboBoxHub.TabIndex = 15;
+            this.comboBoxHub.SelectedIndexChanged += new System.EventHandler(this.acaoChangeHub);
+            // 
+            // panelHub
+            // 
+            this.panelHub.Location = new System.Drawing.Point(12, 42);
+            this.panelHub.Name = "panelHub";
+            this.panelHub.Size = new System.Drawing.Size(280, 160);
+            this.panelHub.TabIndex = 16;
             // 
             // telaSelecaoBG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 251);
+            this.ClientSize = new System.Drawing.Size(304, 290);
+            this.Controls.Add(this.panelHub);
+            this.Controls.Add(this.comboBoxHub);
+            this.Controls.Add(this.labelImageHub);
+            this.Controls.Add(this.buttonRun1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.numericUpDownTimer);
-            this.Controls.Add(this.boxTags);
-            this.Controls.Add(this.comboBoxRating);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.boxHeight);
-            this.Controls.Add(this.boxWidth);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonRun);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "telaSelecaoBG";
             this.Text = "AutoBackground";
             this.SizeChanged += new System.EventHandler(this.telaSelecaoBG_SizeChanged);
@@ -206,21 +157,15 @@ namespace AutoBGchanger
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox boxWidth;
-        private System.Windows.Forms.TextBox boxHeight;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBoxRating;
-        private System.Windows.Forms.TextBox boxTags;
         private System.Windows.Forms.NumericUpDown numericUpDownTimer;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button buttonRun1;
+        private System.Windows.Forms.Label labelImageHub;
+        private System.Windows.Forms.ComboBox comboBoxHub;
+        private System.Windows.Forms.Panel panelHub;
+        public System.Windows.Forms.Button buttonRun;
     }
 }
 

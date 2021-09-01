@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Net;
-using System.Text;
+﻿using System;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -11,133 +6,79 @@ namespace AutoBGchanger
 {
     public partial class telaSelecaoBG : Form
     {
-        string apilink = "https://konachan.com/post.json?tags=order%3Arandom";
+        KonaChanControl kcc;
+        UnsplashControl usc;
+        String runnningHub = "";
+
         Thread timedBGThread = null;
-        bool running = false;
+
         public telaSelecaoBG()
         {
             InitializeComponent();
-            notifyIcon1.Icon = SystemIcons.Application;
+            kcc = new KonaChanControl();
+            usc = new UnsplashControl();
+
+            comboBoxHub.Items.Add("Konachan");
+            comboBoxHub.Items.Add("Unsplash");
+            comboBoxHub.SelectedIndex = 0;
+        }
+
+        private void acaoChangeHub(object sender, EventArgs e)
+        {
+            var selectedHub = comboBoxHub.SelectedItem.ToString();
+            if (selectedHub == "Konachan")
+            {
+                panelHub.Controls.Clear();
+                panelHub.Controls.Add(kcc);
+            }
+            else if (selectedHub == "Unsplash")
+            {
+                panelHub.Controls.Clear();
+                panelHub.Controls.Add(usc);
+            }
         }
 
         private void acaoRun(object sender, EventArgs e)
         {
-            if (button1.Text == "Run")
+            if (buttonRun.Text == "Run")
             {
-                running = true;
-                StringBuilder builder = new StringBuilder();
-                builder.Append(apilink + "+");
-                builder.Append(getTags() + "+");
-                builder.Append(getRating() + "+");
-                builder.Append(getSize());
-                Debug.WriteLine(builder.ToString());
-
-                timedBGThread = new Thread(() => timedLoopBG(builder.ToString()));
-                timedBGThread.Start();
-                button1.Text = "Stop";
-            }
-            else if (button1.Text == "Stop")
-            {
-                running = false;
-                button1.Text = "Run";
-            }
-
-        }
-
-        private void timedLoopBG(string link)
-        {
-            int timer = (int)numericUpDownTimer.Value;
-            try
-            {
-                while (running)
+                var selectedHub = comboBoxHub.SelectedItem.ToString();
+                if (selectedHub == "Konachan")
                 {
-                    string linkBG = getBG(link);
-                    changeBG(linkBG);
-                    Thread.Sleep(timer * 1000);
+                    kcc.executeKonaChanLoop(numericUpDownTimer.Value);
                 }
+                else if (selectedHub == "Unsplash")
+                {
+                    usc.executeUnsplashLoop(numericUpDownTimer.Value);
+                }
+                buttonRun.Text = "Stop";
+                runnningHub = selectedHub;
             }
-            catch (Exception e)
+            else
             {
-                DialogResult dialogResult = MessageBox.Show("The used tags are not available", "Error", MessageBoxButtons.OK);
-                running = false;
-                button1.Text = "Run";
-            }
-        }
-
-        private void changeBG(string link)
-        {
-            Wallpaper.Set(new Uri(link), Wallpaper.Style.Fill);
-        }
-
-        private string getBG(string formatedLink)
-        {
-            string responseBody = new WebClient().DownloadString(formatedLink);
-
-            dynamic jsonBG = JsonConvert.DeserializeObject(responseBody);
-
-            try
-            {
-                return jsonBG[0].file_url;
-            }
-            catch (Exception e)
-            {
-                throw;
+                if (runnningHub == "Konachan")
+                {
+                    kcc.stopKonaChanLoop();
+                }
+                else if (runnningHub == "Unsplash")
+                {
+                    usc.stopUnsplashLoop();
+                }
+                buttonRun.Text = "Run";
             }
 
         }
 
-        private string getTags()
+        private void acaoRun1(object sender, EventArgs e)
         {
-            StringBuilder builder = new StringBuilder();
-
-            string tags = boxTags.Text;
-            builder.Append(tags.Replace(" ", "+"));
-
-            return builder.ToString();
-        }
-
-        private string getSize()
-        {
-            StringBuilder builder = new StringBuilder();
-
-            string width = boxWidth.Text;
-            string height = boxHeight.Text;
-
-            if (!width.Equals(""))
+            var selectedHub = comboBoxHub.SelectedItem.ToString();
+            if (selectedHub == "Konachan")
             {
-                builder.Append("width%3A" + width + "..+");
+                kcc.executeOneTime();
             }
-
-            if (!width.Equals(""))
+            else if (selectedHub == "Unsplash")
             {
-                builder.Append("height%3A" + height + "..");
-            }
-
-            return builder.ToString();
-        }
-
-        private string getRating()
-        {
-            string ratingInput = comboBoxRating.SelectedItem == null ? "" : comboBoxRating.SelectedItem.ToString();
-            switch (ratingInput)
-            {
-                case "Safe":
-                    return "rating%3Asafe";
-
-                case "Safe - Questionable":
-                    return "rating%3Aquestionableless";
-
-                case "Questionable":
-                    return "rating%3Aquestionable";
-
-                case "Questionable - Explicit":
-                    return "rating%3Aquestionableplus";
-
-                case "Explicit":
-                    return "rating%3Aexplicit";
-
-                default:
-                    return "";
+                usc.executeOneTime();
             }
         }
 
@@ -161,7 +102,7 @@ namespace AutoBGchanger
             this.Show();
             this.TopMost = true;
             this.WindowState = FormWindowState.Normal;
-            this.Activate();            
+            this.Activate();
         }
     }
 }
