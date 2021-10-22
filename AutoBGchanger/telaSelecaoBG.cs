@@ -1,22 +1,28 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Threading;
 using System.Windows.Forms;
 
 namespace AutoBGchanger
 {
-    public partial class telaSelecaoBG : Form
+    public partial class telaSelecaoBG : MaterialForm
     {
         KonaChanControl kcc;
         UnsplashControl usc;
         String runnningHub = "";
-
+        readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         Thread timedBGThread = null;
 
         public telaSelecaoBG()
         {
             InitializeComponent();
+
+            materialSkinManager = MaterialSkin.MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+
             kcc = new KonaChanControl();
             usc = new UnsplashControl();
+            AutoBackground.Visible = true;
 
             comboBoxHub.Items.Add("Konachan");
             comboBoxHub.Items.Add("Unsplash");
@@ -86,15 +92,10 @@ namespace AutoBGchanger
         {
             if (FormWindowState.Minimized == this.WindowState)
             {
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(500, "AutoBG", "Running in background", ToolTipIcon.Info);
+                AutoBackground.ShowBalloonTip(500, "AutoBG", "Running in background", ToolTipIcon.Info);
                 this.Hide();
             }
 
-            else if (FormWindowState.Normal == this.WindowState)
-            {
-                notifyIcon1.Visible = false;
-            }
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
